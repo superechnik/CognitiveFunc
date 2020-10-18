@@ -11,7 +11,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content.substring(0, 1) == '!') {
+  if (msg.content.startswith('!')) {
        var str = lib.Selector(msg.content);
        msg.reply(str);
      }
