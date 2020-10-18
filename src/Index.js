@@ -1,4 +1,4 @@
-require('app-module-path').addPath('../CognitiveFunc');
+require('app-module-path').addPath("../CognitiveFunc");
 
 const Discord = require('discord.js');
 const Client = new Discord.Client();
