@@ -11,10 +11,11 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content.startswith('!')) {
-       var str = lib.Selector(msg.content);
-       msg.reply(str);
-     }
-  });
+  var content = msg.content;
+  if (lib.hasKey(content)) {
+    var str = lib.selector(content);
+    msg.reply(str);
+  }
+});
 
 client.login(auth.Token);
