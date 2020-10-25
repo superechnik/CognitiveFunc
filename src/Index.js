@@ -6,23 +6,21 @@ const lib = require('lib/lib.js');
 
 const client = new discord.Client();
 
-connectAndListen();
+client.on('ready', () => {
+   console.log(`Logged in as ${client.user.tag}!`);
+});
+
+client.on('message', msg => {
+  var content = msg.content;
+  if (lib.hasKey(content)) {
+    var str = lib.selector(content);
+    msg.reply(str);
+  }
+});
+
+client.on('shardError', err => {
+  console.log(`Network error occuring: ${err}`);
+});
 
 
-connectAndListen = () => {
-
-  client.on('ready', () => {
-     console.log(`Logged in as ${client.user.tag}!`);
-  });
-
-  client.on('message', msg => {
-    var content = msg.content;
-    if (lib.hasKey(content)) {
-      var str = lib.selector(content);
-      msg.reply(str);
-    }
-  });
-
-  client.login(auth.Token);
-
-}
+client.login(auth.Token);
